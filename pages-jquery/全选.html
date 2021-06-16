@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100px;
+            padding: 20px;
+            border: 1px solid #333;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="all">
+            <input type="checkbox">全选
+        </div>
+        <hr>
+        <div class="select">
+            <input type="checkbox">选项一<br>
+            <input type="checkbox">选项二<br>
+            <input type="checkbox">选项三<br>
+            <input type="checkbox">选项四<br>
+        </div>
+    </div>
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="./utils.js"></script>
+    <script>
+        $('.all>input').change(function(){
+            // console.log($(this).getChecked())
+            $('.select>input').setChecked($(this).getChecked())
+        })
+        $('.select>input').change(function(){
+            $('.all>input').setChecked($('.select>input').selectAll())
+        })
+
+        // $.extend($.fn,{
+        //     selectAll(){
+        //         var flag=true
+        //         for(var i=0;i<this.length;i++){
+        //             if(!this[i].checked){
+        //                 flag=false
+        //                 break
+        //             }
+        //         }
+        //         return flag
+        //     }
+        // })
+
+        // $.extend($.fn,{
+        //     setChecked(){
+        //         // 遍历this
+        //         for(var i=0;i<this.length;i++){
+        //             // 设置值就可以
+        //             this[i].setChecked=type===false?false:true
+        //         }
+        //         return this
+        //     }
+        // })
+
+        // $.extend($.fn,{
+        //     getChecked(){
+        //         if(this.length)return this[0].checked
+        //         // 表示没有
+        //         return false
+        //     }
+        // })
+
+        // $('.select>input').selectAll()
+        // $('.select>input').setChecked()
+        // $('.select>input').getChecked()
+
+        
+    </script>
+</body>
+</html>

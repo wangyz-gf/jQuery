@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        ul{
+            width: 640px;
+            height: 280px;
+            border: 10px solid pink;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        li{
+            width: 160px;
+            height: 100%;
+            overflow: hidden;
+            float: left;
+        }
+        li > img{
+            width: 520px;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="../images/01.jfif" alt=""></li>
+        <li><img src="../images/02.jfif" alt=""></li>
+        <li><img src="../images/03.jpg" alt=""></li>
+        <li><img src="../images/04.jfif" alt=""></li>
+    </ul>
+    <script src="../jquery/jquery.min.js"></script>
+    <script>
+        const current=null
+        // 1.给li绑定鼠标移入事件
+        $('li').mousemove(function(){
+            // 先动兄弟元素
+            // $(this).siblings().finish().animate({width:40})
+            $(this).siblings().stop().animate({width:40})
+            // 再动自己
+            $(this).stop().animate({width:520})
+            current=$(this)
+        })
+        // 2.给ul绑定移出事件
+        $('ul').mouseleave(function(){
+            // $('li').finish().animate({width:160})
+            current.stop().animate({width:160}).siblings().stop().animate({width:160})
+        })
+    </script>
+</body>
+</html>

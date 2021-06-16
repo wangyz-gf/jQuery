@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        ul{
+            width: 400px;
+            height: 120px;
+            border: 10px solid pink;
+            margin: 50px auto;
+            overflow: hidden;
+            padding-top: 20px;
+        }
+        li{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-left: 25px;
+        }
+        li > img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        div{
+            width: 288px;
+            height: 180px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="../images/01.jfif" alt=""></li>
+        <li><img src="../images/02.jfif" alt=""></li>
+        <li><img src="../images/03.jpg" alt=""></li>
+    </ul>
+    <div>
+        <li><img src="../images/01.jfif" alt=""></li>
+    </div>
+    <script src="../jquery/jquery.min.js"></script>
+    <script>
+        $('li')
+        .hover(
+            function(){
+                $('div').fadeIn(100)
+                const src=$(this).find('img').prop('src')
+                $('div').find('img').prop('src',src)
+            },
+            function(){
+                $('div').fadeOut(100)
+            }
+        )
+        .mousemove(function(e){
+            // 拿到坐标点
+            const x=e.pageX+10
+            const y=e.pageY+10
+            // 随时给div复制
+            $('div').offset({left:x,top:y})
+        })
+    </script>
+</body>
+</html>
